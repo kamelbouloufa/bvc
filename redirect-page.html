@@ -1,36 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Auto Redirect</title>
+    <title>تم معالجة الرابط</title>
     <style>
-        /* تنسيق الزر حسب حاجتك */
-        .btn {
-            padding: 15px 30px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 20px;
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        #link-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
         }
         #countdown {
-            font-size: 20px;
+            font-size: 24px;
+            color: #333;
             margin: 20px;
         }
     </style>
 </head>
 <body>
-    <div id="countdown">سيتم التوجيه بعد <span id="timer">10</span> ثانية...</div>
-    <a href="#getLink" class="btn" id="getLink" onclick="redirect()">Get link!</a>
+    <div id="link-box">
+        <h2>تم معالجة الرابط بنجاح!</h2>
+        <p>الرابط المعالج:</p>
+        <p id="processed-link">http://bc.vc/l5w1mjE</p>
+        <div id="countdown">سيتم التوجيه بعد <span id="timer">10</span> ثانية...</div>
+    </div>
 
     <script>
-        // بدء العد التنازلي بعد تحميل الصفحة
         window.onload = function() {
             let seconds = 10;
             const timerElement = document.getElementById("timer");
-            const button = document.getElementById("getLink");
-
-            // تحديث العد التنازلي كل ثانية
+            
+            // العد التنازلي
             const countdownInterval = setInterval(() => {
                 seconds--;
                 timerElement.textContent = seconds;
@@ -39,18 +49,11 @@
                 }
             }, 1000);
 
-            // انقر على الزر تلقائيًا بعد 10 ثوانٍ
+            // التوجيه التلقائي بعد 10 ثوانٍ
             setTimeout(() => {
-                if (button) {
-                    button.click(); // النقر التلقائي
-                }
-            }, 10000); // 10 ثوانٍ
+                window.location.href = "http://bc.vc/l5w1mjE"; // الرابط النهائي
+            }, 10000);
         };
-
-        // دالة التوجيه إلى الرابط النهائي
-        function redirect() {
-            window.location.href = "https://bcvc.ink/l5w1mjE"; // استبدل بالرابط الفعلي
-        }
     </script>
 </body>
 </html>
