@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>تم معالجة الرابط</title>
+    <title>انتظر 10 ثوانٍ</title>
     <style>
         body {
             display: flex;
@@ -12,48 +12,63 @@
             margin: 0;
             background: #f0f0f0;
             font-family: Arial, sans-serif;
-        }
-        #link-box {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
             text-align: center;
+        }
+        #original-link {
+            font-size: 18px;
+            color: #007bff;
+            margin: 20px;
         }
         #countdown {
             font-size: 24px;
             color: #333;
-            margin: 20px;
+        }
+        #redirectButton {
+            padding: 15px 30px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            display: none; /* الزر مخفي في البداية */
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <div id="link-box">
-        <h2>تم معالجة الرابط بنجاح!</h2>
-        <p>الرابط المعالج:</p>
-        <p id="processed-link">http://bc.vc/l5w1mjE</p>
-        <div id="countdown">سيتم التوجيه بعد <span id="timer">10</span> ثانية...</div>
-    </div>
+    <!-- الرابط الأصلي يظهر أولًا -->
+    <div id="original-link">الرابط المختصر: <br> <span>http://bc.vc/l5w1mjE</span></div>
+    
+    <!-- العد التنازلي -->
+    <div id="countdown">انتظر <span id="timer">10</span> ثانية...</div>
+    
+    <!-- زر التوجيه -->
+    <button id="redirectButton" onclick="redirect()">اضغط للمتابعة</button>
 
     <script>
         window.onload = function() {
             let seconds = 10;
             const timerElement = document.getElementById("timer");
-            
+            const button = document.getElementById("redirectButton");
+
             // العد التنازلي
             const countdownInterval = setInterval(() => {
                 seconds--;
                 timerElement.textContent = seconds;
+
                 if (seconds <= 0) {
                     clearInterval(countdownInterval);
+                    button.style.display = "block"; // إظهار الزر
+                    document.getElementById("countdown").style.display = "none"; // إخفاء العداد
                 }
             }, 1000);
-
-            // التوجيه التلقائي بعد 10 ثوانٍ
-            setTimeout(() => {
-                window.location.href = "http://bc.vc/l5w1mjE"; // الرابط النهائي
-            }, 10000);
         };
+
+        // دالة التوجيه
+        function redirect() {
+            window.location.href = "https://example.com"; // استبدل برابطك النهائي
+        }
     </script>
 </body>
 </html>
