@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Auto Redirect</title>
+    <style>
+        /* تنسيق الزر حسب حاجتك */
+        .btn {
+            padding: 15px 30px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 20px;
+        }
+        #countdown {
+            font-size: 20px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="countdown">سيتم التوجيه بعد <span id="timer">10</span> ثانية...</div>
+    <a href="#getLink" class="btn" id="getLink" onclick="redirect()">Get link!</a>
+
+    <script>
+        // بدء العد التنازلي بعد تحميل الصفحة
+        window.onload = function() {
+            let seconds = 10;
+            const timerElement = document.getElementById("timer");
+            const button = document.getElementById("getLink");
+
+            // تحديث العد التنازلي كل ثانية
+            const countdownInterval = setInterval(() => {
+                seconds--;
+                timerElement.textContent = seconds;
+                if (seconds <= 0) {
+                    clearInterval(countdownInterval);
+                }
+            }, 1000);
+
+            // انقر على الزر تلقائيًا بعد 10 ثوانٍ
+            setTimeout(() => {
+                if (button) {
+                    button.click(); // النقر التلقائي
+                }
+            }, 10000); // 10 ثوانٍ
+        };
+
+        // دالة التوجيه إلى الرابط النهائي
+        function redirect() {
+            window.location.href = "https://bcvc.ink/l5w1mjE"; // استبدل بالرابط الفعلي
+        }
+    </script>
+</body>
+</html>
